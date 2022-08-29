@@ -1,0 +1,76 @@
+\documentclass{layout/uia-unofficial-report}
+
+%% Set up the bibliography
+\usepackage[style=ieee]{biblatex} % Change style to suite your needs
+\addbibresource{report.bib}
+
+%% Additional packages and commands
+\setlist{itemsep=-2pt} % Reducing white space in lists slightly
+\renewcommand{\deg}{\si{\degree}\xspace} % Use \deg easily, everywhere
+\DeclareMathOperator*{\argmax}{\arg\!\max} % Defining argmax command delete if not needed
+
+%% ----------------------------------------------------------------------
+%%    Begin of document + Frontmatter (Roman page numbering)
+%% ----------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter
+
+%% Define the main parameters
+\title{A Title to the Report}
+\subtitle{A Catchy Optional Subtitle \\ that Grabs the Attention}
+\author{Author}
+
+\subject{UIA123: Optional Course Name} % Cover only
+\affiliation{Universitetet i Agder} % Cover only
+\coverimage{figures/uia-grm-color-a4.jpg} % Aspect ratio of 2:3 (portrait) recommended
+\definecolor{title}{HTML}{C8102E} % Color for cover title
+\definecolor{affiliation}{HTML}{C8102E} % UiA Color for affiliation
+\definecolor{background}{HTML}{131E29}
+
+\makecover
+\afterpage{\blankpage} % Adding blank page a page see layout/uia-report-class for setup
+\input{frontmatter/title-report}
+\input{frontmatter/preface}
+\input{frontmatter/summary}
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\input{frontmatter/nomenclature}
+
+%% ----------------------------------------------------------------------
+%%    Mainmatter (Arabic page numbering)
+%% ----------------------------------------------------------------------
+
+\mainmatter
+
+\input{mainmatter/introduction}
+
+\input{mainmatter/chapter-2}
+\input{mainmatter/chapter-3}
+%\input{mainmatter/chapter-4} % Create file to add
+
+\input{mainmatter/conclusion}
+
+%% Prevent urls running into margins in bibliography
+\setcounter{biburlnumpenalty}{7000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{7000}
+
+%% Add bibliography
+\printbibliography[heading=bibintoc,title=References]
+
+%% ----------------------------------------------------------------------
+%%    Appendix (Letters for chapters)
+%% ----------------------------------------------------------------------
+
+\appendix
+
+\input{appendix/appendix-a}
+\input{appendix/appendix-b}
+%\input{appendix/appendix-c} % Create file to add
+
+\end{document}
